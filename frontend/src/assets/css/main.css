@@ -9,7 +9,6 @@
 
 html {
   height: 100%;
-  overflow: hidden;
   background-color: #131313;
   background-size: 20px 20px;
 }
@@ -31,6 +30,7 @@ table input{
 	height: 50px;
   margin: 0;
 	text-align: center;
+	font-size: 25px;
 }
 
 
