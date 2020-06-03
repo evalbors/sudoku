@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div class="game">
 		<table>
 			<tr v-bind:key="row" v-for="(row, indexR) in board">
 				<td v-bind:key="number" v-for="(number, indexC) in row" >
@@ -8,6 +9,11 @@
 			</tr>
 		</table>
 		<button @click="getBoard">Start Game</button>
+    </div>
+    <div class="test">
+      <input v-model="axel" @keyup.enter="sayHello">
+      <h1>{{test}}</h1>
+    </div>
   </div>
 </template>
 
@@ -18,7 +24,9 @@ export default {
   name: "app",
   data() {
     return {
-      board: []
+      board: [],
+      test: "",
+      axel: ""
     };
   },
   methods: {
@@ -26,7 +34,13 @@ export default {
       window.backend.board().then(result => {
         this.board = result;
       });
+    },
+    sayHello: function() {
+        window.backend.test(this.axel).then(result => {
+        this.test = result;
+      });
     }
   }
-};
+}
+
 </script>
