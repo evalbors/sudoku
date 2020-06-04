@@ -49,6 +49,17 @@ func main() {
 	app.Run()
 }
 
+// [][]int{
+// 	{2, 1, 3, 4, 5, 6, 7, 8, 9},
+// 	{4, 5, 6, 7, 8, 9, 1, 2, 3},
+// 	{7, 8, 9, 1, 2, 3, 4, 5, 6},
+// 	{2, 1, 4, 3, 6, 5, 8, 9, 7},
+// 	{3, 6, 5, 8, 9, 7, 2, 1, 4},
+// 	{8, 9, 7, 2, 1, 4, 3, 6, 5},
+// 	{5, 3, 1, 6, 4, 2, 9, 7, 8},
+// 	{6, 4, 2, 9, 7, 8, 5, 3, 1},
+// 	{9, 7, 8, 5, 3, 1, 6, 4, 2}}
+
 // func createboard() {
 // 	boardWithobjects []
 // 	for row = 1, row <= 9, row++ {
@@ -68,15 +79,12 @@ func main() {
 // }
 
 // CreateRowOfCells a row
-func CreateRowOfCells(row []int) []Cell {
-	return []Cell{
-		Cell{0, 0, 0, true},
-		Cell{1, 1, 0, true},
-		Cell{2, 2, 0, true},
-		Cell{3, 3, 0, true},
-		Cell{4, 4, 0, true},
-		Cell{5, 5, 0, true},
-		Cell{6, 6, 0, true},
-		Cell{7, 7, 0, true},
-		Cell{8, 8, 0, true}}
+func CreateRowOfCells(row []int, indexOfRow int) []Cell {
+	var newRow []Cell
+
+	for col := 0; col < 9; col++ {
+		var newCell = Cell{row[col], col, indexOfRow, true}
+		newRow = append(newRow, newCell)
+	}
+	return newRow
 }
