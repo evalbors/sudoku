@@ -11,7 +11,7 @@
 		<button @click="getBoard">Start Game</button>
     </div>
     <div class="test">
-      <input v-model="axel" @keyup.enter="sayHello">
+      <input v-model="name" @keyup.enter="sayHello">
       <h1>{{test}}</h1>
     </div>
   </div>
@@ -26,7 +26,7 @@ export default {
     return {
       board: [],
       test: "",
-      axel: ""
+      name: ""
     };
   },
   methods: {
@@ -36,7 +36,7 @@ export default {
       });
     },
     sayHello: function() {
-        window.backend.test(this.axel).then(result => {
+      window.backend.test(this.name).then(result => {
         this.test = result;
       });
     }

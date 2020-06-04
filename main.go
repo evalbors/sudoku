@@ -5,15 +5,12 @@ import (
 	"github.com/wailsapp/wails"
 )
 
-//	var Value  {
-//	i=0; i>9; }
-
 //Cell object
 type Cell struct {
-	value  int
-	column int
-	row    int
-	status bool // true: se ve el número y false: no se muestra el núm
+	value     int
+	column    int
+	row       int
+	isVisible bool // true: se ve el número y false: no se muestra el núm
 }
 
 func test(pepitosupercoolchico string) string {
@@ -61,11 +58,25 @@ func main() {
 // 	return board[rows[cells]]
 // }
 
-// func createrow(row int) {
+// func CreateRow(row int, value) {
 // 	row []
 // 	for col = 1, col <= 9, col++ {
 // 		cell{value,row,col,true}
-// 		push cell to row
+// 		push cell to row (row = append(row, Cell))
 // 	}
 // 	return row[cells]
 // }
+
+// CreateRowOfCells a row
+func CreateRowOfCells(row []int) []Cell {
+	return []Cell{
+		Cell{0, 0, 0, true},
+		Cell{1, 1, 0, true},
+		Cell{2, 2, 0, true},
+		Cell{3, 3, 0, true},
+		Cell{4, 4, 0, true},
+		Cell{5, 5, 0, true},
+		Cell{6, 6, 0, true},
+		Cell{7, 7, 0, true},
+		Cell{8, 8, 0, true}}
+}
