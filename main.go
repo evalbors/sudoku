@@ -7,9 +7,9 @@ import (
 
 //Cell object
 type Cell struct {
-	value     int
-	column    int
-	row       int
+	value     int  //row[col]
+	column    int  //col
+	row       int  //indexOfRow
 	isVisible bool // true: se ve el número y false: no se muestra el núm
 }
 
@@ -49,37 +49,8 @@ func main() {
 	app.Run()
 }
 
-// [][]int{
-// 	{2, 1, 3, 4, 5, 6, 7, 8, 9},
-// 	{4, 5, 6, 7, 8, 9, 1, 2, 3},
-// 	{7, 8, 9, 1, 2, 3, 4, 5, 6},
-// 	{2, 1, 4, 3, 6, 5, 8, 9, 7},
-// 	{3, 6, 5, 8, 9, 7, 2, 1, 4},
-// 	{8, 9, 7, 2, 1, 4, 3, 6, 5},
-// 	{5, 3, 1, 6, 4, 2, 9, 7, 8},
-// 	{6, 4, 2, 9, 7, 8, 5, 3, 1},
-// 	{9, 7, 8, 5, 3, 1, 6, 4, 2}}
-
-// func createboard() {
-// 	boardWithobjects []
-// 	for row = 1, row <= 9, row++ {
-// 		createrow(row, value[row])
-// 		push row to board
-// 	}
-// 	return board[rows[cells]]
-// }
-
-// func CreateRow(row int, value) {
-// 	row []
-// 	for col = 1, col <= 9, col++ {
-// 		cell{value,row,col,true}
-// 		push cell to row (row = append(row, Cell))
-// 	}
-// 	return row[cells]
-// }
-
 // CreateRowOfCells a row
-func CreateRowOfCells(row []int, indexOfRow int) []Cell {
+func CreateRowOfCells(row [9]int, indexOfRow int) []Cell {
 	var newRow []Cell
 
 	for col := 0; col < 9; col++ {
@@ -87,4 +58,18 @@ func CreateRowOfCells(row []int, indexOfRow int) []Cell {
 		newRow = append(newRow, newCell)
 	}
 	return newRow
+}
+
+//CreateBoard a board
+func CreateBoard(basicBoard [9][9]int) [][]Cell {
+	var newBoard [][]Cell
+	var indexOfRow int
+
+	for _, row := range basicBoard {
+		var newRow = CreateRowOfCells(row, indexOfRow)
+		indexOfRow++
+		newBoard = append(newBoard, newRow)
+	}
+
+	return newBoard
 }

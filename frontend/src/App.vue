@@ -2,9 +2,9 @@
   <div id="app">
     <div class="game">
 		<table>
-			<tr v-bind:key="row" v-for="(row, indexR) in board">
-				<td v-bind:key="number" v-for="(number, indexC) in row" >
-					<input type="text" name="" :value="number" :id="'row' + indexR + 'column' + indexC">
+			<tr v-bind:key="row" v-for="(row) in board">
+				<td v-bind:key="number" v-for="(number) in row" >
+					<input type="text" name="" :value="number" :id="'row' + cell.row + 'column' + cell.col">
 				</td>
 			</tr>
 		</table>
